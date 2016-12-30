@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--project download-->
+    <string name="scroll_aware_fab_behavior">文件夹按钮</string>
+    
+</resources>

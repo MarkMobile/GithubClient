@@ -81,6 +81,16 @@ public class Utilities {
                 return new DateTime().minusMonths(1).toString("yyyy-MM-dd");
             case "action_this_year":
                 return new DateTime().minusYears(1).toString("yyyy-MM-dd");
+            case "action_two_year":
+                return new DateTime().minusYears(2).toString("yyyy-MM-dd");
+            case "action_third_year":
+                return new DateTime().minusYears(3).toString("yyyy-MM-dd");
+            case "action_fourth_year":
+                return new DateTime().minusYears(4).toString("yyyy-MM-dd");
+            case "action_fifth_year":
+                return new DateTime().minusYears(5).toString("yyyy-MM-dd");
+            case "action_custom_year":
+                return new DateTime().minusYears(11).toString("yyyy-MM-dd");
             default:
                 return "";
         }

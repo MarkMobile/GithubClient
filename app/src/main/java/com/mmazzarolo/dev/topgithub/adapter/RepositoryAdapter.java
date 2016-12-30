@@ -81,8 +81,8 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Repository repository = mRepositories.get(position);
-
-        String fullName = "<b>" + repository.getOwner().getLogin() + "&#47;" + "</b>" + repository.getName();
+      
+        String fullName = "<font color=\"#FF0000\"><b>"+(position+1)+"</b></font> "+"<b>" + repository.getOwner().getLogin() + "&#47;" + "</b>" + repository.getName();
         holder.textViewFullName.setText(Html.fromHtml(fullName));
 
         holder.textViewDescription.setText(repository.getDescription());

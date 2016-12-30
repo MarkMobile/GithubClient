@@ -11,6 +11,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.cundong.recyclerview.EndlessRecyclerOnScrollListener;
+import com.cundong.recyclerview.HeaderAndFooterRecyclerViewAdapter;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
@@ -27,6 +29,8 @@ import com.mmazzarolo.dev.topgithub.fragment.LanguagesFragment;
 import com.mmazzarolo.dev.topgithub.model.LanguageList;
 import com.mmazzarolo.dev.topgithub.model.Repository;
 import com.mmazzarolo.dev.topgithub.rest.GithubApiClient;
+import com.mmazzarolo.dev.topgithub.widget.recycleview.LoadingFooter;
+import com.mmazzarolo.dev.topgithub.widget.recycleview.RecyclerViewStateUtils;
 
 import org.parceler.Parcels;
 
@@ -54,6 +58,9 @@ public class MainActivity extends BaseActivity {
     private String mSelectedPeriod;
 
     private int mSelectedItemId;
+    private int mPage=1;
+    private int previousTotal = 0;
+
 
     @Nullable @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
     @Bind(R.id.toolbar) Toolbar mToolbar;
@@ -84,10 +91,12 @@ public class MainActivity extends BaseActivity {
             mRepositories = Parcels.unwrap(savedInstanceState.getParcelable(SAVED_LIST));
             setupRecyclerView();
             if (mRepositories.isEmpty()) {
+                showLoadingView();
                 startSearch();
             }
         } else {
             setupRecyclerView();
+            showLoadingView();
             startSearch();
         }
     }
@@ -125,6 +134,12 @@ public class MainActivity extends BaseActivity {
             mMyDataStore.selectedLanguage().put(language);
             mSelectedLanguage = language;
             getSupportActionBar().setTitle(mSelectedLanguage);
+
+            mPage = 1;
+            mRepositories.clear();
+            mAdapter.notifyDataSetChanged();
+            showLoadingView();
+
             startSearch();
             return false;
         });
@@ -174,25 +189,30 @@ public class MainActivity extends BaseActivity {
     }
 
     private void setupRecyclerView() {
+        LinearLayoutManager layoutManager;
         mAdapter = new RepositoryAdapter(mRepositories, this);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        HeaderAndFooterRecyclerViewAdapter  mHeaderAndFooterRecyclerViewAdapter = new HeaderAndFooterRecyclerViewAdapter(mAdapter);
+        mRecyclerView.setAdapter(mHeaderAndFooterRecyclerViewAdapter);
+        mRecyclerView.addOnScrollListener(mOnScrollListener);
+      
     }
 
     private void startSearch() {
         setToolbarTitle();
         String language = mSelectedLanguage;
         String created = Utilities.getCreatedDateFromPeriod(mSelectedPeriod);
-        mRepositories.clear();
-        mAdapter.notifyDataSetChanged();
-        showLoadingView();
+       
         // If there is a connection start a search
         if (Utilities.isConnected(this)) {
             if ("All".equals(language)) {
                 language = "";
             }
-            mGithubApiClient.startSearch(language, created);
+            mGithubApiClient.startSearch(String.valueOf(mPage),language, created);
         } else {
             showNoConnectionView();
         }
@@ -213,10 +233,19 @@ public class MainActivity extends BaseActivity {
             case R.id.action_today:
             case R.id.action_this_week:
             case R.id.action_this_month:
+            case R.id.action_two_year:
+            case R.id.action_third_year:
+            case R.id.action_fourth_year:    
+            case R.id.action_fifth_year:
+            case R.id.action_custom_year:    
             case R.id.action_this_year:
                 mMyDataStore.selectedPeriod().put(getResources().getResourceEntryName(id));
                 mSelectedPeriod = getResources().getResourceEntryName(id);
                 invalidateOptionsMenu();
+                mPage=1;
+                mRepositories.clear();
+                mAdapter.notifyDataSetChanged();
+                showLoadingView();
                 startSearch();
                 return true;
         }
@@ -232,7 +261,6 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-
         EventBus.getDefault().unregister(this);
     }
 
@@ -240,11 +268,11 @@ public class MainActivity extends BaseActivity {
         if (event.getRepositories() == null || event.getRepositories().isEmpty()) {
             showEmptyView();
         } else {
-            for (Repository repository : event.getRepositories()) {
-                mRepositories.add(repository);
-                mAdapter.notifyItemInserted(0);
-            }
+            mRepositories.addAll(event.getRepositories());
+            mAdapter.notifyDataSetChanged();
             showContentView();
+            RecyclerViewStateUtils.setFooterViewState(mRecyclerView, LoadingFooter.State.Normal);
+            
         }
     }
 
@@ -254,6 +282,7 @@ public class MainActivity extends BaseActivity {
         } else {
             showErrorView(event.getRetrofitError().getMessage());
         }
+        RecyclerViewStateUtils.setFooterViewState(mRecyclerView, LoadingFooter.State.Normal);
     }
 
     public void onEvent(ChangedLanguagesEvent event) {
@@ -262,7 +291,11 @@ public class MainActivity extends BaseActivity {
             mDrawer.closeDrawer();
         }
         setupDrawer();
+      
+        mRepositories.clear();
+        mAdapter.notifyDataSetChanged();
         startSearch();
+        RecyclerViewStateUtils.setFooterViewState(mRecyclerView, LoadingFooter.State.Normal);
     }
 
     @Override
@@ -274,4 +307,23 @@ public class MainActivity extends BaseActivity {
     protected void onTryAgainClick() {
         startSearch();
     }
+
+    /**
+      * @desc:分页加载
+      * @author：Arison on 2016/12/22
+      */
+    private EndlessRecyclerOnScrollListener mOnScrollListener = new EndlessRecyclerOnScrollListener() {
+
+        @Override
+        public void onLoadNextPage(View view) {
+            super.onLoadNextPage(view);
+            LoadingFooter.State state = RecyclerViewStateUtils.getFooterViewState(mRecyclerView);
+            if(state == LoadingFooter.State.Loading) {
+                return;
+            }
+            mPage++;
+            startSearch();
+            RecyclerViewStateUtils.setFooterViewState(MainActivity.this, mRecyclerView, 30, mPage, LoadingFooter.State.Loading, null);
+        }
+    };
 }

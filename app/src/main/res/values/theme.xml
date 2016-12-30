@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+
+
+    <style name="Theme.CodeReader.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.CodeReader.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    
+</resources>

@@ -20,9 +20,31 @@
             <item
                 android:id="@+id/action_this_month"
                 android:title="@string/period_last_month"/>
+
             <item
                 android:id="@+id/action_this_year"
                 android:title="@string/period_last_year"/>
+            
+            <item
+                android:id="@+id/action_two_year"
+                android:title="@string/period_last_two_year"/>
+
+            <item
+                android:id="@+id/action_third_year"
+                android:title="@string/period_last_third_year"/>
+
+            <item
+                android:id="@+id/action_fourth_year"
+                android:title="@string/period_last_fourth_year"/>
+
+            <item
+                android:id="@+id/action_fifth_year"
+                android:title="@string/period_last_fifth_year"/>
+
+            <item
+                android:id="@+id/action_custom_year"
+                android:title="@string/period_last_custom_year"/>
+
         </menu>
     </item>
 

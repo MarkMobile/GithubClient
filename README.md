@@ -1,50 +1,31 @@
-# Top GitHub <img src="https://raw.githubusercontent.com/mmazzarolo/top-github/master/extras/web_hi_res_120.png" width="110" align="left"> 
-##### *Find what repositories the GitHub community is most excited about today.*
-<br/>
-<br/>
-<br/>
-<img src="https://raw.githubusercontent.com/mmazzarolo/top-github/master/extras/screen-main.png" width="210">
-<img src="https://raw.githubusercontent.com/mmazzarolo/top-github/master/extras/screen-languages.png" width="210">
-<img src="https://raw.githubusercontent.com/mmazzarolo/top-github/master/extras/screen-edit-languages.png" width="210">
-<br/>
-<br/>
-  <a href="https://play.google.com/store/apps/details?id=com.mmazzarolo.dev.topgithub&utm_source=global_co&utm_medium=prtnr&utm_content=Mar2515&utm_campaign=PartBadge&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img alt="Get it on Google Play" src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" width="200" /></a>
-<br/>
-##Features
-#### API calls
-**Top GitHub** uses [Retrofit](http://square.github.io/retrofit/) to process API requests from GitHub.  
-The Retrofit **RetrofitRestadapter** is tied to the Application and created only one time, it comunicates the results of API calls using [Eventbus](https://github.com/greenrobot/EventBus).
-<br/>
+### 1.0 
 
-#### Vector drawables
-Almost every Drawable used is generated from a Vector and thanks to [Wnafee Vector Compat](https://github.com/wnafee/vector-compat) they are even backward compatible to API 14+.  
-The programming languages icons are courtesy of [DevIcon](http://devicon.fr/): I converted the SVGs to XML Vectors with the help of [inloop](http://inloop.github.io/svg2android/).  
-You can find the available languages [here](https://github.com/mmazzarolo/top-github/blob/master/app/src/main/res/values/arrays.xml): as you can see the list is massive and there are only [a few vectors](https://github.com/mmazzarolo/top-github/tree/master/app/src/main/res/drawable) for them... I'll be pleased to add a vector if you can find one that suits the app (in SVG or XML Vector format).
-<br/>
+- recycleview分页加载更多
+- recycleview关键词查询功能-搜索框  查询github项目
+- github项目离线下载功能
+- 离线项目阅读功能  主要针对md文件阅读，支持横屏阅读
 
-#### Data storage
-Saving personal settings (like the languages) on a DB was a little overkill so I opted for saving them in SharedPreferences (with the help of [EasyDatastore](https://github.com/fdoyle/EasyDatastore])).
-<br/>
-<br/>
 
-## Notes
-This app is totally free, you can do whatever you want to it.  
-Please, let me know if you find any bug!
-<br/>  
-<br/>
+### 1.1
 
-## Changelog
-**v1.3**
-- Added a "Last year" option (thanks to Aaron E. for the suggestion) 
-- Fixed the "try again" button on error
+- 针对有截图效果的，提取截图地址，然后写成公共界面展示；
+- 针对有apk包下载地址的，提取apk包下载地址，然后进行下载和安装；
+- 支持github用户登录并查看用户相关信息
+- 支持github查看自己创建的项目
+- 支持查看自己start的项目
 
-**v1.2**
-- Added "Share repository" and "Copy URL to clipboard" options on repository long click 
-- Fixed a bug not showing the JavaScript icon
-- Added Erlang icon
+### 1.2 
 
-**v1.1**  
-- Fixed a bug showing the wrong name in the toolbar after changing languages
-- Fixed the selected period name on first install
-- Fixed the error msg screen 
-- Fixed naming convention and vector icons
+- stars github项目
+- 向指定github项目提交issue
+- 查看github项目的issue
+
+### 1.3
+
+- 切换主题,夜晚模式，白天模式
+
+### 1.4 
+
+- 分享统计功能
+- crash报告功能集成
+

@@ -14,6 +14,12 @@
     <string name="period_last_month">Last month</string>
     <string name="period_last_year">Last year</string>
 
+    <string name="period_last_two_year">Last two year</string>
+    <string name="period_last_third_year">Last third year</string>
+    <string name="period_last_fourth_year">Last fourth year</string>
+    <string name="period_last_fifth_year">Last fifth year</string>
+    <string name="period_last_custom_year">Last 2005 year</string>
+
     <!--Repository rows-->
     <string name="row_subtitle">%1$s • %2$s stars %3$s • Built by</string>
     <string name="row_subtitle_no_lang">%1$s stars %2$s • Built by</string>
@@ -48,4 +54,22 @@
     <!--Snackbar messages-->
     <string name="sb_copied">URL copied to clipboard.</string>
 
+
+
+
+    <!--RecycleView footer-->
+    <string name="list_footer_loading">正在加载中…</string>
+    <string name="list_footer_network_error">点击重新加载</string>
+    <string name="list_footer_end">数据加载完毕！</string>
+    
+    
+    <!--activity title-->
+    <string name="title_activity_project_download">ProjectDownloadActivity</string>
+
+
+    <!--project download-->
+    <string name="scroll_aware_fab_behavior">scroll_aware_fab_behavior</string>
+    <!-- empty -->
+    <string name="empty_main_repo">Haven\'t opened file!You can open by bottom button</string>
+    
 </resources>
