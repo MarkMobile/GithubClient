@@ -3,7 +3,10 @@ package com.mmazzarolo.dev.topgithub;
 import android.app.Application;
 import android.preference.PreferenceManager;
 
+import com.facebook.stetho.Stetho;
 import com.lacronicus.easydatastorelib.DatastoreBuilder;
+import com.mmazzarolo.dev.topgithub.db.CoReaderDbHelper;
+import com.mmazzarolo.dev.topgithub.db.DatabaseManager;
 import com.mmazzarolo.dev.topgithub.model.Language;
 import com.mmazzarolo.dev.topgithub.model.LanguageList;
 import com.mmazzarolo.dev.topgithub.rest.GithubApiClient;
@@ -26,6 +29,14 @@ public class MainApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        if (BuildConfig.DEBUG) {
+            Stetho.initialize(
+                    Stetho.newInitializerBuilder(this)
+                            .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
+                            .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
+                            .build());
+        }
+        
         // Initalize JodaTime
         JodaTimeAndroid.init(this);
 
@@ -40,6 +51,9 @@ public class MainApplication extends Application {
         if (mMyDataStore.isFirstRun().get(true)) {
             onFirstRun();
         }
+        //init sqlite
+        DatabaseManager.initialize(CoReaderDbHelper.getInstance(this));
+      
     }
 
     private void onFirstRun() {

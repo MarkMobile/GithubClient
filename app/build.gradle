@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.squareup.sqldelight'
 
 android {
   
@@ -45,7 +46,13 @@ dependencies {
     compile 'net.danlew:android.joda:2.8.2'
     compile 'org.parceler:parceler-api:1.0.3'
     apt "org.parceler:parceler:1.0.3"
+
+    debugCompile 'com.facebook.stetho:stetho:1.1.0'
+    apt 'com.google.auto.value:auto-value:' + auto_value
+    provided 'com.google.auto.value:auto-value:' + auto_value
     
     //recycleView分页
     compile 'com.github.cundong:HeaderAndFooterRecyclerView:1e616c9552'
+   
+  
 }

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Directoryandfilechooser</string>
+
+    <string name="select_file">Select File</string>
+    <string name="empty_text">No Content</string>
+    <string name="menu_search">Search</string>
+</resources>
