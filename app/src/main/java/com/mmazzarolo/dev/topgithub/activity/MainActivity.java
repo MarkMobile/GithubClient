@@ -1,5 +1,6 @@
 package com.mmazzarolo.dev.topgithub.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -248,6 +249,9 @@ public class MainActivity extends BaseActivity {
                 showLoadingView();
                 startSearch();
                 return true;
+            case R.id.action_download:
+                startActivity(new Intent(MainActivity.this,ProjectDownloadActivity.class));
+                break;
         }
         return super.onOptionsItemSelected(item);
     }

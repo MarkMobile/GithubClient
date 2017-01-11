@@ -50,7 +50,9 @@ dependencies {
     debugCompile 'com.facebook.stetho:stetho:1.1.0'
     apt 'com.google.auto.value:auto-value:' + auto_value
     provided 'com.google.auto.value:auto-value:' + auto_value
-    
+
+
+    compile 'com.alibaba:fastjson:1.2.21'
     //recycleView分页
     compile 'com.github.cundong:HeaderAndFooterRecyclerView:1e616c9552'
    

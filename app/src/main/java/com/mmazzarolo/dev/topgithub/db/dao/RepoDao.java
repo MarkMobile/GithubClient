@@ -1,6 +1,5 @@
 package com.mmazzarolo.dev.topgithub.db.dao;
 
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -18,13 +17,12 @@ public class RepoDao {
     
     SQLiteDatabase db;
     
-    public RepoDao(Context ct){
+    public RepoDao(){
         db=  DatabaseManager.getInstance().openDatabase();
     }
 
 
     public List<Repo> readRepos() {
-       // SQLiteDatabase db = getReadableDatabase();
         List<Repo> repos = new ArrayList<>();
         Cursor cursor = db.rawQuery(DbRepo.SELECT_ALL, null);
         if (cursor != null && cursor.getCount() > 0) {
@@ -36,5 +34,20 @@ public class RepoDao {
             }
         }
         return repos;
+    }
+
+    private Repo parseRepo(Cursor cursor) {
+        DbRepo dbRepo = DbRepo.FOR_TEAM_MAPPER.map(cursor);
+        Repo repo = new Repo();
+        repo.id = String.valueOf(dbRepo._id());
+        repo.name = dbRepo.name();
+        repo.absolutePath = dbRepo.absolute_path();
+        repo.netDownloadUrl = dbRepo.net_url();
+        repo.isFolder = dbRepo.is_folder();
+        repo.lastModify = dbRepo.last_modify();
+        repo.downloadId = dbRepo.download_id();
+        repo.factor = dbRepo.factor();
+        repo.isUnzip = dbRepo.is_unzip();
+        return repo;
     }
 }

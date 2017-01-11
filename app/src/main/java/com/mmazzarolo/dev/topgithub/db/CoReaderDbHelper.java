@@ -4,18 +4,16 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.facebook.stetho.common.LogUtil;
+import com.mmazzarolo.dev.topgithub.utils.LogUtil;
+
 
 /**
  * Created by Arison on 2016/12/30.
  */
 public class CoReaderDbHelper extends SQLiteOpenHelper {
-
-
-    private static final String TAG = "CoReaderDbHelper";
+    
     private static final String DATABASE_NAME = "coreader.db";
     private static final int DATABASE_VERSION = 1;
-
     private static volatile CoReaderDbHelper sInstance = null;
 
     private CoReaderDbHelper(Context context) {
