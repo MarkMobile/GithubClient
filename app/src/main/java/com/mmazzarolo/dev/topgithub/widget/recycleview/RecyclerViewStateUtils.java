@@ -25,7 +25,7 @@ public class RecyclerViewStateUtils {
      * @param state         FooterView State
      * @param errorListener FooterView处于Error状态时的点击事件
      */
-    public static void setFooterViewState(Activity instance, RecyclerView recyclerView, int pageSize, int currpage,LoadingFooter.State state, View.OnClickListener errorListener) {
+    public static void setFooterViewState(Activity instance, RecyclerView recyclerView, int pageSize, int currpage, com.mmazzarolo.dev.topgithub.widget.recycleview.LoadingFooter.State state, View.OnClickListener errorListener) {
 
         if(instance==null || instance.isFinishing()) {
             return;
