@@ -13,10 +13,16 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
     <android.support.design.widget.AppBarLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+        <!--toolbar-->
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="enterAlways"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
         <ProgressBar
             android:id="@+id/progress_bar_web"
             android:layout_width="match_parent"
@@ -26,7 +32,4 @@
             android:indeterminate="false"
             android:indeterminateDrawable="@android:drawable/progress_indeterminate_horizontal"/>
     </android.support.design.widget.AppBarLayout>
-        
-       
-
 </android.support.design.widget.CoordinatorLayout>

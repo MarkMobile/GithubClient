@@ -27,7 +27,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -44,10 +44,10 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     private String mStrSnackbarUrlCopied;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.textview_full_name) TextView textViewFullName;
-        @Bind(R.id.textview_description) TextView textViewDescription;
-        @Bind(R.id.textview_subtitle) TextView textViewSubtitle;
-        @Bind(R.id.imageview_owner) ImageView imageViewOwner;
+        @BindView(R.id.textview_full_name) TextView textViewFullName;
+        @BindView(R.id.textview_description) TextView textViewDescription;
+        @BindView(R.id.textview_subtitle) TextView textViewSubtitle;
+        @BindView(R.id.imageview_owner) ImageView imageViewOwner;
 
         public ViewHolder(View view) {
             super(view);

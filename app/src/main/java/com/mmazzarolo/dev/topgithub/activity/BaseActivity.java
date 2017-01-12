@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,7 +13,7 @@ import com.malinskiy.materialicons.IconDrawable;
 import com.malinskiy.materialicons.Iconify;
 import com.mmazzarolo.dev.topgithub.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -24,22 +23,22 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-    @Bind(R.id.recyclerview) RecyclerView mViewContent;
+    @BindView(R.id.recyclerview) RecyclerView mViewContent;
 
-    @Bind(R.id.main_loading) View mViewLoading;
+    @BindView(R.id.main_loading) View mViewLoading;
 
-    @Bind(R.id.main_empty) View mViewEmpty;
-    @Bind(R.id.imageview_empty) ImageView mImageViewEmpty;
+    @BindView(R.id.main_empty) View mViewEmpty;
+    @BindView(R.id.imageview_empty) ImageView mImageViewEmpty;
 
-    @Bind(R.id.main_no_connection) View mViewNoConnection;
-    @Bind(R.id.imageview_no_connection) ImageView mImageViewNoConnection;
-    @Bind(R.id.button_no_connection) Button mButtonNoConnection;
+    @BindView(R.id.main_no_connection) View mViewNoConnection;
+    @BindView(R.id.imageview_no_connection) ImageView mImageViewNoConnection;
+    @BindView(R.id.button_no_connection) Button mButtonNoConnection;
 
 
-    @Bind(R.id.main_error) View mViewError;
-    @Bind(R.id.imageview_error) ImageView mImageViewError;
-    @Bind(R.id.textview_content_error) TextView mTextViewContentError;
-    @Bind(R.id.button_error) Button mButtonError;
+    @BindView(R.id.main_error) View mViewError;
+    @BindView(R.id.imageview_error) ImageView mImageViewError;
+    @BindView(R.id.textview_content_error) TextView mTextViewContentError;
+    @BindView(R.id.button_error) Button mButtonError;
 
 
     @Override

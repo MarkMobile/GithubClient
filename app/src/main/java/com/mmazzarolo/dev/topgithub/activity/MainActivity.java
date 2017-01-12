@@ -38,7 +38,8 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+
+import butterknife.BindView;
 import de.greenrobot.event.EventBus;
 
 public class MainActivity extends BaseActivity {
@@ -63,8 +64,8 @@ public class MainActivity extends BaseActivity {
     private int previousTotal = 0;
 
 
-    @Nullable @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
-    @Bind(R.id.toolbar) Toolbar mToolbar;
+    @Nullable @BindView(R.id.recyclerview) RecyclerView mRecyclerView;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

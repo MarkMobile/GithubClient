@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.Utilities;
 import com.mmazzarolo.dev.topgithub.fragment.LanguagesFragment;
@@ -19,7 +18,7 @@ import com.mmazzarolo.dev.topgithub.model.Language;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -32,9 +31,9 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.ViewHo
     private final List<Language> mLanguages;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.textview_language) TextView textViewLanguage;
-        @Bind(R.id.imageview_language) ImageView imageView;
-        @Bind(R.id.switchcompat) SwitchCompat switchCompat;
+        @BindView(R.id.textview_language) TextView textViewLanguage;
+        @BindView(R.id.imageview_language) ImageView imageView;
+        @BindView(R.id.switchcompat) SwitchCompat switchCompat;
 
         public ViewHolder(View view) {
             super(view);

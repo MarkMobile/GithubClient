@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
-
 import com.mmazzarolo.dev.topgithub.MainApplication;
 import com.mmazzarolo.dev.topgithub.MyDataStore;
 import com.mmazzarolo.dev.topgithub.R;
@@ -25,8 +24,8 @@ import com.mmazzarolo.dev.topgithub.model.LanguageList;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
 import butterknife.BindString;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.greenrobot.event.EventBus;
 
@@ -44,7 +43,7 @@ public class LanguagesFragment extends DialogFragment implements CompoundButton.
     private LanguageAdapter mAdapter;
     private List<Language> mLanguages = new ArrayList<Language>();
 
-    @Bind(R.id.recyclerview) RecyclerView mRecyclerView;
+    @BindView(R.id.recyclerview) RecyclerView mRecyclerView;
 
     @BindString(R.string.cancel) String mStrCancel;
     @BindString(R.string.select_languages) String mStrSelectLanguages;
