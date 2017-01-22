@@ -3,6 +3,7 @@ package com.mmazzarolo.dev.topgithub.activity;
 import android.os.Bundle;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.widget.ProgressBar;
 
 import com.mmazzarolo.dev.topgithub.R;
@@ -28,12 +29,21 @@ public class SimpleWebActivity extends BaseActivity implements SearchView.OnQuer
     private String mUrl;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_web_input, menu);
+        getMenuInflater().inflate(R.menu.menu_web_save, menu);
+        getMenuInflater().inflate(R.menu.menu_web_actions, menu);
+        return true;
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
         
     }
-
+   
+    
     @Override
     public boolean onQueryTextSubmit(String query) {
         return false;

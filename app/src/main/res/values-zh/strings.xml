@@ -3,5 +3,15 @@
 
     <!--project download-->
     <string name="scroll_aware_fab_behavior">文件夹按钮</string>
-    
+
+
+    <!-- action -->
+    <string name="action_settings">设置</string>
+    <string name="action_go_out">退出</string>
+    <string name="action_save">保存项目</string>
+    <string name="action_repo_add">添加下载项目</string>
+    <string name="action_open_by_browser">用浏览器打开</string>
+
+    <!-- menu -->
+    <string name="menu_web_input">输入网址</string>
 </resources>
