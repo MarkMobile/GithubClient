@@ -5,7 +5,6 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -18,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mmazzarolo.dev.topgithub.MainApplication;
+import com.mmazzarolo.dev.topgithub.Navigator;
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.RoundedTransformation;
 import com.mmazzarolo.dev.topgithub.Utilities;
@@ -111,9 +111,11 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
         ViewHolder holder = (ViewHolder) view.getTag();
         int position = holder.getAdapterPosition();
         String url = mRepositories.get(position).getHtmlUrl();
-        Intent i = new Intent(Intent.ACTION_VIEW);
-        i.setData(Uri.parse(url));
-        mContext.startActivity(i);
+        //调用其它应用打开
+//        Intent i = new Intent(Intent.ACTION_VIEW);
+//        i.setData(Uri.parse(url));
+//        mContext.startActivity(i);
+        Navigator.startWebActivity(mContext,url);
     }
 
     @Override

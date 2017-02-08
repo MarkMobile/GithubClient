@@ -65,7 +65,7 @@
     
     <!--activity title-->
     <string name="title_activity_project_download">ProjectDownloadActivity</string>
-
+    <string name="title_activity_simple_web">simple_web</string>
 
     <!--project download-->
     <string name="scroll_aware_fab_behavior">scroll_aware_fab_behavior</string>
@@ -81,4 +81,7 @@
     <string name="action_save">Save repo</string>
     <string name="action_repo_add">Download repo</string>browser
     <string name="action_open_by_browser">Open by Browser</string>
+
+    <!-- web -->
+    <string name="web_url_input_hint">Please input url</string>
 </resources>
