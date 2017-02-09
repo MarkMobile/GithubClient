@@ -1,6 +1,7 @@
 package com.mmazzarolo.dev.topgithub;
 
 import android.app.Application;
+import android.content.Context;
 import android.preference.PreferenceManager;
 
 import com.facebook.stetho.Stetho;
@@ -24,11 +25,12 @@ public class MainApplication extends Application {
 
     private static GithubApiClient mGithubApiClient;
     private static MyDataStore mMyDataStore;
+    private static Context sAppContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
-
+        //stetho调式
         if (BuildConfig.DEBUG) {
             Stetho.initialize(
                     Stetho.newInitializerBuilder(this)
@@ -53,6 +55,8 @@ public class MainApplication extends Application {
         }
         //init sqlite
         DatabaseManager.initialize(CoReaderDbHelper.getInstance(this));
+        
+        sAppContext=getApplicationContext();
       
     }
 
@@ -81,7 +85,10 @@ public class MainApplication extends Application {
     public static MyDataStore getMyDataStore() {
         return mMyDataStore;
     }
-    
-    
+
+
+    public static Context getAppContext() {
+        return sAppContext;
+    }
     
 }

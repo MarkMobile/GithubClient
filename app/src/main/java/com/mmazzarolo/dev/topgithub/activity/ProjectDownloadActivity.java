@@ -21,7 +21,8 @@ public class ProjectDownloadActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+       
+        /*创建数据库*/
         RepoDao repoDao=new RepoDao();
         List<Repo> repos=repoDao.readRepos();
         LogUtil.d(JSON.toJSONString(repos));

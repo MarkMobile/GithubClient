@@ -48,15 +48,12 @@ dependencies {
     compile 'net.danlew:android.joda:2.8.2'
     compile 'org.parceler:parceler-api:1.0.3'
     apt "org.parceler:parceler:1.0.3"
-
     debugCompile 'com.facebook.stetho:stetho:1.1.0'
     apt 'com.google.auto.value:auto-value:' + auto_value
     provided 'com.google.auto.value:auto-value:' + auto_value
-
-
     compile 'com.alibaba:fastjson:1.2.21'
     //recycleView分页
     compile 'com.github.cundong:HeaderAndFooterRecyclerView:1e616c9552'
-   
-  
+    //文件选择类库
+    compile project(':libraries:directoryandfilechooser')
 }

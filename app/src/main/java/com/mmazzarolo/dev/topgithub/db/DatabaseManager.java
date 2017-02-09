@@ -6,6 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by Arison on 2017/1/9.
+ * 解决多线程下操作数据库的问题
  */
 public class DatabaseManager {
     

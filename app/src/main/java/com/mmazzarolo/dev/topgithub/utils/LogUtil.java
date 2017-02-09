@@ -6,6 +6,10 @@ import android.util.Log;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+  * @desc:自定义的log打印类
+  * @author：Arison on 2017/2/9
+  */
 public class LogUtil {
 	
 	private static final boolean DEBUG = true;
@@ -75,7 +79,11 @@ public class LogUtil {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 		return sdf.format(now);
 	}
-	
+	 
+	/**
+	  * @desc:分段打印log日志
+	  * @author：Arison on 2017/2/9
+	  */
 	public static void prinlnLongMsg(String TAG,String responseInfo){
 		if (responseInfo != null){
 			if (responseInfo.length() >=3000) {
