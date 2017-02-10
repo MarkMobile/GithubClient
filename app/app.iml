@@ -134,8 +134,8 @@
     <orderEntry type="library" exported="" name="jsr305-2.0.1" level="project" />
     <orderEntry type="library" exported="" name="support-core-utils-25.0.1" level="project" />
     <orderEntry type="library" exported="" name="joda-time-2.8.2-no-tzdb" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-25.0.1" level="project" />
     <orderEntry type="library" exported="" name="parceler-api-1.0.3" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-25.0.1" level="project" />
     <orderEntry type="library" exported="" name="vector-compat-1.0.5" level="project" />
     <orderEntry type="library" exported="" name="fastjson-1.2.21" level="project" />
     <orderEntry type="library" exported="" name="eventbus-2.4.0" level="project" />
