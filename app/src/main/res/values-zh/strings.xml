@@ -14,4 +14,11 @@
 
     <!-- menu -->
     <string name="menu_web_input">输入网址</string>
+
+    <!-- download -->
+    <string name="repo_download_start">%s 开始下载</string>
+    <string name="repo_download_fail">%s 下载失败,错误的下载链接</string>
+    <string name="repo_download_complete">%s 下载完成</string>
+    <string name="repo_download_url_parse_error">该链接不能解析为下载链接</string>
+    
 </resources>

@@ -57,4 +57,8 @@ public class Repo extends BaseModel{
                 ", isUnzip=" + isUnzip +
                 '}';
     }
+
+    public boolean isDownloading() {
+        return downloadId > 0;
+    }
 }

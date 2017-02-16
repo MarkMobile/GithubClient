@@ -5,6 +5,8 @@ import android.text.TextUtils;
 
 import com.mmazzarolo.dev.topgithub.model.Repo;
 
+import java.io.File;
+
 /**
  * Created by Arison on 2017/2/9.
  * 下载地址解析工具类
@@ -90,5 +92,14 @@ public class DownloadUrlParser {
             return sb.toString();
         }
         return sb.toString();
+    }
+
+    
+    public static File getRemoteRepoZipFileName(String repoName) {
+        return new File(FileCache.getInstance().getCacheDir(), getRepoNameZip(repoName));
+    }
+
+    public static String getRepoNameZip(String name) {
+        return name + ZIP_SUFFIX;
     }
 }

@@ -56,4 +56,7 @@ dependencies {
     compile 'com.github.cundong:HeaderAndFooterRecyclerView:1e616c9552'
     //文件选择类库
     compile project(':libraries:directoryandfilechooser')
+    //rxjava
+    compile 'io.reactivex:rxjava:' + rxjava
+    compile 'io.reactivex:rxandroid:' + rxandroid
 }

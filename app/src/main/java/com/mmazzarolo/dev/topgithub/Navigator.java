@@ -13,7 +13,9 @@ public class Navigator {
 
     public final static String EXTRA_WEB_URL = "extra_web_url";
     public final static String EXTRA_HTML_STRING = "extra_html_string";
-
+    //下载
+    public final static String EXTRA_REPO = "extra_repo";
+    public final static String EXTRA_DOWNLOAD_SERVICE_TYPE = "extra_download_service_type";
 
     public static void startWebActivity(Context context, String url) {
         Intent intent = new Intent(context, SimpleWebActivity.class);

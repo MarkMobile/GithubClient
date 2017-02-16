@@ -13,7 +13,8 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        <!--主程序界面-->
+
+        <!-- 主程序界面 -->
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name" >
@@ -23,16 +24,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--离线下载界面-->
+        <!-- 离线下载界面 -->
         <activity
             android:name=".activity.ProjectDownloadActivity"
             android:label="@string/title_activity_project_download" >
         </activity>
-        <!--simple web -->
-        <activity android:name=".activity.SimpleWebActivity"
-            android:label="@string/title_activity_simple_web">
+        <!-- simple web -->
+        <activity
+            android:name=".activity.SimpleWebActivity"
+            android:label="@string/title_activity_simple_web" >
         </activity>
-        
+
+        <service
+            android:name=".service.DownloadRepoService"
+            android:enabled="true"
+            android:exported="true" >
+        </service>
     </application>
 
 </manifest>

@@ -84,4 +84,7 @@
 
     <!-- web -->
     <string name="web_url_input_hint">Please input url</string>
+    
+    <!--downloda-->
+    <string name="repo_download_url_parse_error">This url can\'t parse to downloadUrl</string>
 </resources>

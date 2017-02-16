@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.mmazzarolo.dev.topgithub.db.DatabaseManager;
+import com.mmazzarolo.dev.topgithub.db.DbRepoModel;
 import com.mmazzarolo.dev.topgithub.model.DbRepo;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 
@@ -49,5 +50,21 @@ public class RepoDao {
         repo.factor = dbRepo.factor();
         repo.isUnzip = dbRepo.is_unzip();
         return repo;
+    }
+
+    /**
+      * @desc:更新项目的下载id
+      * @author：Arison on 2017/2/16
+      */
+    public void updateRepoDownloadId(long downloadId, String repoId) {
+        db.execSQL(DbRepoModel.UPDATE_DOWNLOAD_ID, new String[]{String.valueOf(downloadId), String.valueOf(repoId)});
+    }
+    /**
+      * @desc:删除下载的项目
+      * @author：Arison on 2017/2/16
+      */
+    public void deleteRepo(long id) {
+        db.execSQL(DbRepoModel.DELETE_REPO
+                , new String[]{String.valueOf(id)});
     }
 }
