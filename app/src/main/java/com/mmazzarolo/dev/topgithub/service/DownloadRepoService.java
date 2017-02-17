@@ -72,7 +72,7 @@ public class DownloadRepoService extends Service {
         long id = in.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, 0);
         switch (type) {
             case DOWNLOAD_COMPLETE://下载完成
-                doRepoDownloadComplete(id);
+               doRepoDownloadComplete(id);
                 break;
             case DOWNLOAD_REPO://下载文件
                 downloadFile(repo);
@@ -86,6 +86,7 @@ public class DownloadRepoService extends Service {
         }
     }
 
+   
     private void downloadFile(Repo repo) {
         RepoDao dao=  new RepoDao();
         RemoteRepoFetcher dataFetcher=new RemoteRepoFetcher(this,repo.netDownloadUrl,repo.name);
@@ -100,6 +101,26 @@ public class DownloadRepoService extends Service {
         RxBus.getInstance().send(new DownloadRepoMessageEvent(getString(R.string.repo_download_start, repo.name)));
         checkDownloadProgress();
     }
+   
+    /**
+      * @desc:下载完成
+      * @author：Arison on 2017/2/17
+      */
+    private void doRepoDownloadComplete(long id){
+        
+        
+    }
+    
+    
+    /**
+      * @desc:移除下载
+      * @author：Arison on 2017/2/17
+      */
+    private void removeDownloadingRepo(long id) {
+        
+        
+    }
+
 
 
     @Override
@@ -151,7 +172,11 @@ public class DownloadRepoService extends Service {
             stopSelf();
             return;
         }
-        
+        if (mProgressSubscription != null && !mProgressSubscription.isUnsubscribed()) {
+            mProgressSubscription.unsubscribe();
+        }
+
+        mProgressSubscription = checkDownloadingProgress(this);
         
     }
 
@@ -160,10 +185,10 @@ public class DownloadRepoService extends Service {
         return Observable.create(new Observable.OnSubscribe<List<Repo>>() {
             @Override
             public void call(Subscriber<? super List<Repo>> subscriber) {
-                
+
             }
         })    .subscribeOn(Schedulers.io())
-              .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
               .subscribe();
     }
 
