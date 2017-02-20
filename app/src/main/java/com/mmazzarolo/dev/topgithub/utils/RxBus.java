@@ -14,6 +14,8 @@ public class RxBus {
 
     private static volatile RxBus mDefaultInstance;
     
+    private final Subject<Object, Object> _bus = new SerializedSubject<>(PublishSubject.create());
+    
     public static RxBus getInstance() {
         if (mDefaultInstance == null) {
             synchronized (RxBus.class) {
@@ -24,8 +26,6 @@ public class RxBus {
         }
         return mDefaultInstance;
     }
-
-    private final Subject<Object, Object> _bus = new SerializedSubject<>(PublishSubject.create());
 
     public void send(Object o) {
         _bus.onNext(o);

@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import com.alibaba.fastjson.JSON;
 import com.mmazzarolo.dev.topgithub.R;
+import com.mmazzarolo.dev.topgithub.activity.base.BaseViewActivity;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 import com.mmazzarolo.dev.topgithub.utils.LogUtil;
@@ -14,7 +15,7 @@ import java.util.List;
   * @desc:离线下载界面
   * @author：Arison on 2016/12/30
   */
-public class ProjectDownloadActivity extends BaseActivity {
+public class ProjectDownloadActivity extends BaseViewActivity {
 
    
     

@@ -22,6 +22,7 @@ import com.mmazzarolo.dev.topgithub.MainApplication;
 import com.mmazzarolo.dev.topgithub.MyDataStore;
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.Utilities;
+import com.mmazzarolo.dev.topgithub.activity.base.BaseViewActivity;
 import com.mmazzarolo.dev.topgithub.adapter.RepositoryAdapter;
 import com.mmazzarolo.dev.topgithub.event.ChangedLanguagesEvent;
 import com.mmazzarolo.dev.topgithub.event.SearchFailureEvent;
@@ -42,7 +43,7 @@ import java.util.List;
 import butterknife.BindView;
 import de.greenrobot.event.EventBus;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseViewActivity {
 
     private static final String SAVED_LIST =
             "com.mmazzarolo.dev.topgithub.activity.MainActivity.SAVED_LIST";

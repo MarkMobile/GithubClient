@@ -1,8 +1,7 @@
-package com.mmazzarolo.dev.topgithub.activity;
+package com.mmazzarolo.dev.topgithub.activity.base;
 
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
@@ -18,10 +17,10 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Matteo on 03/09/2015.
- *
+ * 默认activity的布局样式-基类 
  * This Activity handles the content/loading/empty/error/no_connection views.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseViewActivity extends BaseActivity{
 
     @BindView(R.id.recyclerview) RecyclerView mViewContent;
 
@@ -121,11 +120,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         Snackbar.make(mViewContent, text, lenght).show();
     }
 
-    /**
-     * Abstract methods that MUST be implemented by the extending class
-     */
-    protected abstract int getLayoutResourceId();
-
+    
     protected abstract void onTryAgainClick();
 
 }
