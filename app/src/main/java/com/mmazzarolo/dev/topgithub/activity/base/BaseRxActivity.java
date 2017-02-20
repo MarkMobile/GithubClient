@@ -3,7 +3,6 @@ package com.mmazzarolo.dev.topgithub.activity.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
 
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.event.rx.DownloadRepoMessageEvent;
@@ -74,9 +73,10 @@ public abstract class BaseRxActivity extends BaseActivity{
 
 
     protected void showMessage(String message) {
-        if (mCoordinatorContainer != null)
+        if (mCoordinatorContainer != null) {
 //            Snackbar.make(mCoordinatorContainer, message, Snackbar.LENGTH_SHORT)
 //                    .setAction(R.string.snackbar_action, view -> {})
 //                    .show();
+        }
     }
 }
