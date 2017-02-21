@@ -3,6 +3,7 @@ package com.mmazzarolo.dev.topgithub;
 import android.content.Context;
 import android.content.Intent;
 
+import com.mmazzarolo.dev.topgithub.activity.MainActivity;
 import com.mmazzarolo.dev.topgithub.activity.SimpleWebActivity;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
 import com.mmazzarolo.dev.topgithub.model.Repo;
@@ -20,12 +21,17 @@ public class Navigator {
     public final static String EXTRA_REPO = "extra_repo";
     public final static String EXTRA_DOWNLOAD_SERVICE_TYPE = "extra_download_service_type";
 
+    public static void startMainActivity(Context context) {
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+    }
+    
     public static void startWebActivity(Context context, String url) {
         Intent intent = new Intent(context, SimpleWebActivity.class);
         intent.putExtra(EXTRA_WEB_URL, url);
         context.startActivity(intent);
     }
-
     
     /**
       * @desc:启动下载服务类
