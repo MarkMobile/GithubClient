@@ -66,4 +66,21 @@ public class FileCache {
     public String getRepoAbsolutePath(String repoName) {
         return getCacheDir().getPath() + File.separator + repoName;
     }
+
+    
+    /**
+      * @desc:删除文件和目录
+      * @author：Arison on 2017/2/21
+      */
+    public static void deleteFilesByDirectory(File directory) {
+        if (directory != null && directory.exists() && directory.list() != null) {
+            for (File item : directory.listFiles()) {
+                if (item.isDirectory()) {
+                    deleteFilesByDirectory(item);
+                } else {
+                    item.delete();
+                }
+            }
+        }
+    }
 }

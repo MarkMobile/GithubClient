@@ -8,7 +8,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -24,6 +23,8 @@ import android.widget.ProgressBar;
 
 import com.mmazzarolo.dev.topgithub.Navigator;
 import com.mmazzarolo.dev.topgithub.R;
+import com.mmazzarolo.dev.topgithub.activity.base.BaseRxActivity;
+import com.mmazzarolo.dev.topgithub.utils.DownloadUrlParser;
 import com.mmazzarolo.dev.topgithub.widget.webview.NestedScrollWebView;
 
 import butterknife.BindView;
@@ -32,7 +33,7 @@ import butterknife.ButterKnife;
 /**
  * Created by Arison on 2017/1/12.
  */
-public class SimpleWebActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class SimpleWebActivity extends BaseRxActivity implements SearchView.OnQueryTextListener {
 
     private static final String TAG = "SimpleWebActivity";
 
@@ -82,7 +83,10 @@ public class SimpleWebActivity extends AppCompatActivity implements SearchView.O
         int id = item.getItemId();
         switch (id) {
             case R.id.action_save://下载
-
+                if (!TextUtils.isEmpty(mUrl)
+                        && !DownloadUrlParser.parseGithubUrlAndDownload(SimpleWebActivity.this, mUrl)) {
+                    showMessage(getString(R.string.repo_download_url_parse_error));
+                }
                 return true;
             case R.id.menu_action_open_by_browser://用浏览器打开
                 Intent i = new Intent(Intent.ACTION_VIEW);

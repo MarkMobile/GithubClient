@@ -3,6 +3,7 @@ package com.mmazzarolo.dev.topgithub.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.mmazzarolo.dev.topgithub.Navigator;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 
 import java.io.File;
@@ -18,11 +19,12 @@ public class DownloadUrlParser {
 
     public static boolean parseGithubUrlAndDownload(Context context, String url) {
         String downloadUrl = parseGithubDownloadUrl(url);
+        LogUtil.d("下载地址："+downloadUrl);
         if (downloadUrl == null) return false;
         String repoName = getRepoName(url);
         Repo repo = new Repo(repoName
                 , FileCache.getInstance().getRepoAbsolutePath(repoName), downloadUrl, true, 0);
-//        Navigator.startDownloadNewRepoService(context, repo);
+        Navigator.startDownloadNewRepoService(context, repo);
         return true;
     }
     

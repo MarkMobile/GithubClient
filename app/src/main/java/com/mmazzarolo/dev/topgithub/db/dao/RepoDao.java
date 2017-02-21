@@ -13,6 +13,7 @@ import java.util.List;
 
 /**
  * Created by Arison on 2017/1/9.
+ * 这个类有没有必要写成单例，还有待考证
  */
 public class RepoDao {
     
@@ -66,5 +67,53 @@ public class RepoDao {
     public void deleteRepo(long id) {
         db.execSQL(DbRepoModel.DELETE_REPO
                 , new String[]{String.valueOf(id)});
+    }
+     
+    /**
+      * @desc:更新项目下载id
+      * @author：Arison on 2017/2/21
+      */
+    public void updateRepoDownloadProgress(long downloadId, float factor) {
+        db.execSQL(DbRepoModel.UPDATE_DOWNLOAD_PROGRESS
+                , new String[]{String.valueOf(factor), String.valueOf(downloadId)});
+    }
+
+    public void updateRepoUnzipProgress(long downloadId, float factor, boolean isUnzip) {
+        db.execSQL(DbRepoModel.UPDATE_UNZIP_PROGRESS
+                , new String[]{String.valueOf(factor),  String.valueOf(isUnzip ? 1 : 0), String.valueOf(downloadId)});
+    }
+
+    public void resetRepoDownloadId(long downloadId) {
+        db.execSQL(DbRepoModel.RESET_DOWNLOAD_ID, new String[]{String.valueOf(downloadId)});
+    }
+
+    public Repo readSameRepo(Repo repo) {
+        Repo result = null;
+        Cursor cursor = db.rawQuery(
+                DbRepo.CHECK_SAME_REPO,
+                new String[]{
+                        repo.name,
+                        repo.absolutePath
+                });
+        if (cursor.moveToFirst()) {
+            result = parseRepo(cursor);
+        }
+        return result;
+    }
+
+    public long insertRepo(Repo repo) {
+        Repo same = readSameRepo(repo);
+        if (same != null) return Long.valueOf(same.id);
+        if (repo.lastModify == 0) repo.lastModify = System.currentTimeMillis();
+        return db.insert(DbRepoModel.TABLE_NAME, null, DbRepo.FACTORY.marshal()
+                .name(repo.name)
+                .absolute_path(repo.absolutePath)
+                .last_modify(repo.lastModify)
+                .net_url(repo.netDownloadUrl)
+                .is_folder(repo.isFolder)
+                .download_id(repo.downloadId)
+                .factor(repo.factor)
+                .is_unzip(repo.isUnzip)
+                .asContentValues());
     }
 }
