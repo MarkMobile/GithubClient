@@ -32,6 +32,7 @@ import butterknife.ButterKnife;
 
 /**
  * Created by Matteo on 01/09/2015.
+ * top trends list  adapter
  */
 public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.ViewHolder>
         implements View.OnClickListener, View.OnLongClickListener {

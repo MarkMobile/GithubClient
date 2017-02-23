@@ -252,7 +252,7 @@ public class MainActivity extends BaseViewActivity {
                 startSearch();
                 return true;
             case R.id.action_download:
-                startActivity(new Intent(MainActivity.this,ProjectDownloadActivity.class));
+                startActivity(new Intent(MainActivity.this,ProjectCacheActivity.class));
                 break;
         }
         return super.onOptionsItemSelected(item);

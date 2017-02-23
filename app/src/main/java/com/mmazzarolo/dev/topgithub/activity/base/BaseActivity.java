@@ -11,48 +11,49 @@ import com.mmazzarolo.dev.topgithub.utils.LogUtil;
  */
 public abstract class BaseActivity extends AppCompatActivity {
 
-
+    private static  String TAG = "BaseActivity";
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
-        LogUtil.d();
+        LogUtil.d(TAG,"onCreate()");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        LogUtil.d();
+        LogUtil.d(TAG,"onStart()");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        LogUtil.d();
+        LogUtil.d(TAG,"onResume()");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        LogUtil.d();
+        LogUtil.d(TAG,"onPause()");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        LogUtil.d();
+        LogUtil.d(TAG,"onStop()");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        LogUtil.d();
+        LogUtil.d(TAG,"onDestroy()");
     }
 
     @Override
     public void onContentChanged() {
         super.onContentChanged();
-        LogUtil.d();
+        LogUtil.d(TAG,"onContentChanged()");
     }
 
 

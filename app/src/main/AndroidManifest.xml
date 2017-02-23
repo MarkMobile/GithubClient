@@ -29,7 +29,7 @@
         </activity>
         <!-- 离线下载界面 -->
         <activity
-            android:name=".activity.ProjectDownloadActivity"
+            android:name=".activity.ProjectCacheActivity"
             android:label="@string/title_activity_project_download" >
         </activity>
         <!-- simple web -->
@@ -43,7 +43,7 @@
             android:enabled="true"
             android:exported="true" >
         </service>
-
+         <!--广播-->
         <receiver android:name=".broadcast.DownloadReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
