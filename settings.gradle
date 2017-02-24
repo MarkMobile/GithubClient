@@ -1,1 +1,1 @@
-include ':app' ,':libraries:directoryandfilechooser'
+include ':app' ,':libraries:directoryandfilechooser',':libraries:itemtouchhelperextension'
