@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!--project download-->
-    <string name="scroll_aware_fab_behavior">文件夹按钮</string>
-
+    
+    <!-- main project list download-->
+    <!--緩存列表-->
+    <string name="scroll_aware_fab_behavior">com.loopeer.codereader.ui.view.ScrollAwareFABBehavior</string>
+    <string name="header_item_github_search">Search</string>
+    <string name="header_item_github_search_link">https://github.com/search</string>
+    <string name="header_item_trending">Trending</string>
+    <string name="header_item_trending_link">https://github.com/trending</string>
+    <string name="repo_delete">Delete</string>
 
     <!-- action -->
     <string name="action_settings">设置</string>

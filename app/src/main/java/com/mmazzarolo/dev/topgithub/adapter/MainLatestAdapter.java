@@ -4,12 +4,17 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
+import com.mmazzarolo.dev.topgithub.R;
+import com.mmazzarolo.dev.topgithub.model.MainHeaderItem;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -46,16 +51,36 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
     }
 
     
+    
+    
+    
+    
+    
     /**
       * @desc:类型1-头布局
       * @author：Arison on 2017/2/23
       */
     class MainHeaderHolder extends RecyclerView.ViewHolder{
 
-
+        @BindView(R.id.grid_main)
+        GridView mGridView;
+        private MainHeaderAdapter mMainHeaderAdapter;
+        
         public MainHeaderHolder(View itemView) {
             super(itemView);
-        } 
+            ButterKnife.bind(this,itemView);
+            mMainHeaderAdapter = new MainHeaderAdapter(itemView.getContext());
+            mGridView.setAdapter(mMainHeaderAdapter);
+        }
+
+        public void bind() {
+            List<MainHeaderItem> items = new ArrayList<>();
+            items.add(new MainHeaderItem(R.drawable.ic_github, R.string.header_item_github_search
+                    , itemView.getContext().getString(R.string.header_item_github_search_link)));
+            items.add(new MainHeaderItem(R.drawable.ic_trending, R.string.header_item_trending
+                    , itemView.getContext().getString(R.string.header_item_trending_link)));
+            mMainHeaderAdapter.updateData(items);
+        }
         
     }
     
