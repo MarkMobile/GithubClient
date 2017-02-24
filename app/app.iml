@@ -156,5 +156,6 @@
     <orderEntry type="library" exported="" name="recyclerview-v7-25.0.1" level="project" />
     <orderEntry type="library" exported="" name="auto-value-1.2" level="project" />
     <orderEntry type="module" module-name="directoryandfilechooser" exported="" />
+    <orderEntry type="module" module-name="itemtouchhelperextension" exported="" />
   </component>
 </module>

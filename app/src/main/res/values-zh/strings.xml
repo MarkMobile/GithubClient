@@ -29,4 +29,5 @@
     <string name="repo_download_complete">%s 下载完成</string>
     <string name="repo_download_url_parse_error">该链接不能解析为下载链接</string>
     
+    <string name="repo_download_isunzip">解压...</string>
 </resources>

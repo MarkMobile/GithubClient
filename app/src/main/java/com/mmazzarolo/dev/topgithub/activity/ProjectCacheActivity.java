@@ -12,16 +12,13 @@ import android.widget.ViewAnimator;
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.activity.base.BaseViewActivity;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
-import com.mmazzarolo.dev.topgithub.event.rx.DownloadFailDeleteEvent;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 import com.mmazzarolo.dev.topgithub.utils.LogUtil;
-import com.mmazzarolo.dev.topgithub.utils.RxBus;
 import com.mmazzarolo.dev.topgithub.widget.loader.ILoadHelper;
 
 import java.util.List;
 
 import butterknife.BindView;
-import rx.android.schedulers.AndroidSchedulers;
 
 /**
   * @desc:离线下载界面
@@ -67,13 +64,13 @@ public class ProjectCacheActivity extends BaseViewActivity {
         
         initView();
         
-        registerSubscription(RxBus.getInstance().toObservable()
-                .filter(o -> o instanceof DownloadFailDeleteEvent)
-                .map(o -> ((DownloadFailDeleteEvent)o).deleteRepo)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext()
-                .subscribe()
-        );
+//        registerSubscription(RxBus.getInstance().toObservable()
+//                .filter(o -> o instanceof DownloadFailDeleteEvent)
+//                .map(o -> ((DownloadFailDeleteEvent)o).deleteRepo)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .doOnNext()
+//                .subscribe()
+//        );
     }
 
     private void initView() {

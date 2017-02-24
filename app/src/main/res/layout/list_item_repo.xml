@@ -32,7 +32,7 @@
             android:gravity="center"/>
 
     </LinearLayout>
-
-<!--    <include layout="@layout/view_list_repo_item_content"/>-->
+<!--list列表布局-->
+    <include layout="@layout/view_list_repo_item_content"/>
 </FrameLayout>
 
