@@ -10,7 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.loopeer.itemtouchhelperextension.Extension;
+import com.mmazzarolo.dev.topgithub.Navigator;
 import com.mmazzarolo.dev.topgithub.R;
+import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
 import com.mmazzarolo.dev.topgithub.model.MainHeaderItem;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 import com.mmazzarolo.dev.topgithub.widget.view.ForegroundProgressRelativeLayout;
@@ -48,7 +50,34 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
     
     @Override
     public void bindView(Repo var1, int var2, RecyclerView.ViewHolder var3) {
-        
+        //header
+        if (var3 instanceof  MainHeaderHolder){
+            MainHeaderHolder mainHeaderHolder= (MainHeaderHolder) var3;
+            mainHeaderHolder.bind();
+        }
+        //item
+        if (var3 instanceof  RepoViewHolder){
+            RepoViewHolder viewHolder = (RepoViewHolder) var3;
+            Subscription subscription=viewHolder.bind(var1);
+            if (subscription!=null){
+                mAllSubscription.add(subscription);
+            }
+//            viewHolder.mProgressRelativeLayout.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    
+//                }
+//            });
+            viewHolder.mProgressRelativeLayout.setOnClickListener(v -> {
+                if (!var1.isDownloading() && !var1.isUnzip){
+                    Navigator.startCodeReadActivity(getContext(), var1);
+                }
+            });
+            viewHolder.mActionDeleteView.setOnClickListener(view -> doRepoDelete(var3));
+            viewHolder.mActionSyncView.setOnClickListener(view ->
+                            Navigator.startDownloadRepoService(getContext(), var1)
+            );
+        }
     }
 
     @Override
@@ -108,15 +137,40 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
         public float getActionWidth() {
             return 0;
         }
-
+      
+        //rxjava 绑定
         public Subscription bind(Repo repo) {
-            
+//            mImgRepoType.setBackgroundResource(repo.isFolder ? R.drawable.shape_circle_folder : R.drawable.shape_circle_document);
+//            mImgRepoType.setImageResource(repo.isFolder ? R.drawable.ic_repo_white : R.drawable.ic_document_white);
+//            mTextRepoName.setText(repo.name);
+//            mTextRepoTime.setText(DateUtils.getRelativeTimeSpanString(itemView.getContext(), repo.lastModify));
+//            mActionSyncView.setVisibility(repo.isNetRepo() ? View.VISIBLE : View.GONE);
+//            mCloud.setVisibility(repo.isNetRepo() ? View.VISIBLE : View.GONE);
+//            mLocalPhone.setVisibility(repo.isLocalRepo() ? View.VISIBLE : View.GONE);
+//            resetSubscription(repo);
+//            if (repo.isDownloading()) {
+//                mProgressRelativeLayout.setInitProgress(repo.factor);
+//            } else {
+//                mProgressRelativeLayout.setInitProgress(1f);
+//            }
+//            mProgressRelativeLayout.setUnzip(repo.isUnzip);
+          
             
             return mSubscription;
         }
 
         private void resetSubscription(Repo repo) {
-            
+            if (mSubscription!=null&&!mSubscription.isUnsubscribed()){
+                mSubscription.unsubscribe();
+            }
+            //Subject<Object, Object>
+//            mSubscription= RxBus.getInstance()
+//                    .toObservable()
+//                    .filter(o -> o instanceof DownloadProgressEvent)
+//                    .map(o -> (DownloadProgressEvent)o)//Object->DownloadProgressEvent
+//                    .filter(o -> (o.downloadId==repo.downloadId)&&repo.id.equals(o.repoId))
+//                    .observeOn(AndroidSchedulers.mainThread())//观察者
+//                    .
         }
     }
     
@@ -154,5 +208,22 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
     
     public void clearSubscription() {
         mAllSubscription.clear();
+    }
+    
+    /**
+      * @desc:删除离线项目
+      * @author：Arison on 2017/3/1
+      */
+    private void doRepoDelete(RecyclerView.ViewHolder var3) {
+        int position = var3.getAdapterPosition();
+        Repo repo = mData.get(position); 
+        new RepoDao().deleteRepo(Long.parseLong(repo.id));
+        if (repo.downloadId > 0) Navigator.startDownloadRepoServiceRemove(getContext(), repo.downloadId);
+        deleteItem(position);
+    }
+
+    private void deleteItem(int position) {
+        mData.remove(position);
+        notifyItemRemoved(position);
     }
 }

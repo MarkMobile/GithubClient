@@ -1,5 +1,6 @@
 package com.mmazzarolo.dev.topgithub;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 
@@ -53,6 +54,27 @@ public class Navigator {
         Intent intent = new Intent(context, DownloadRepoService.class);
         intent.putExtra(EXTRA_REPO, repo);
         intent.putExtra(EXTRA_DOWNLOAD_SERVICE_TYPE, DownloadRepoService.DOWNLOAD_REPO);
+        context.startService(intent);
+    }
+
+    /**
+      * @desc:阅读源码的界面
+      * @author：Arison on 2017/3/1
+      */
+    public static void startCodeReadActivity(Context context, Repo repo) {
+//        Intent intent = new Intent(context, CodeReadActivity.class);
+//        intent.putExtra(EXTRA_REPO, repo);
+//        context.startActivity(intent);
+    }
+    
+    /**
+      * @desc:移除下载
+      * @author：Arison on 2017/3/1
+      */
+    public static void startDownloadRepoServiceRemove(Context context, long downloadId) {
+        Intent intent = new Intent(context, DownloadRepoService.class);
+        intent.putExtra(EXTRA_DOWNLOAD_SERVICE_TYPE, DownloadRepoService.DOWNLOAD_REMOVE_DOWNLOAD);
+        intent.putExtra(DownloadManager.EXTRA_DOWNLOAD_ID, downloadId);
         context.startService(intent);
     }
 }
