@@ -2,6 +2,7 @@ package com.mmazzarolo.dev.topgithub.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,8 +14,10 @@ import com.loopeer.itemtouchhelperextension.Extension;
 import com.mmazzarolo.dev.topgithub.Navigator;
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
+import com.mmazzarolo.dev.topgithub.event.rx.DownloadProgressEvent;
 import com.mmazzarolo.dev.topgithub.model.MainHeaderItem;
 import com.mmazzarolo.dev.topgithub.model.Repo;
+import com.mmazzarolo.dev.topgithub.utils.RxBus;
 import com.mmazzarolo.dev.topgithub.widget.view.ForegroundProgressRelativeLayout;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import rx.Subscription;
+import rx.android.schedulers.AndroidSchedulers;
 import rx.subscriptions.CompositeSubscription;
 
 /**
@@ -140,20 +144,20 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
       
         //rxjava 绑定
         public Subscription bind(Repo repo) {
-//            mImgRepoType.setBackgroundResource(repo.isFolder ? R.drawable.shape_circle_folder : R.drawable.shape_circle_document);
-//            mImgRepoType.setImageResource(repo.isFolder ? R.drawable.ic_repo_white : R.drawable.ic_document_white);
-//            mTextRepoName.setText(repo.name);
-//            mTextRepoTime.setText(DateUtils.getRelativeTimeSpanString(itemView.getContext(), repo.lastModify));
-//            mActionSyncView.setVisibility(repo.isNetRepo() ? View.VISIBLE : View.GONE);
-//            mCloud.setVisibility(repo.isNetRepo() ? View.VISIBLE : View.GONE);
-//            mLocalPhone.setVisibility(repo.isLocalRepo() ? View.VISIBLE : View.GONE);
-//            resetSubscription(repo);
-//            if (repo.isDownloading()) {
-//                mProgressRelativeLayout.setInitProgress(repo.factor);
-//            } else {
-//                mProgressRelativeLayout.setInitProgress(1f);
-//            }
-//            mProgressRelativeLayout.setUnzip(repo.isUnzip);
+            mImgRepoType.setBackgroundResource(repo.isFolder ? R.drawable.shape_circle_folder : R.drawable.shape_circle_document);
+            mImgRepoType.setImageResource(repo.isFolder ? R.drawable.ic_repo_white : R.drawable.ic_document_white);
+            mTextRepoName.setText(repo.name);
+            mTextRepoTime.setText(DateUtils.getRelativeTimeSpanString(itemView.getContext(), repo.lastModify));
+            mActionSyncView.setVisibility(repo.isNetRepo() ? View.VISIBLE : View.GONE);
+            mCloud.setVisibility(repo.isNetRepo() ? View.VISIBLE : View.GONE);
+            mLocalPhone.setVisibility(repo.isLocalRepo() ? View.VISIBLE : View.GONE);
+            resetSubscription(repo);
+            if (repo.isDownloading()) {
+                mProgressRelativeLayout.setInitProgress(repo.factor);
+            } else {
+                mProgressRelativeLayout.setInitProgress(1f);
+            }
+            mProgressRelativeLayout.setUnzip(repo.isUnzip);
           
             
             return mSubscription;
@@ -163,13 +167,22 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
             if (mSubscription!=null&&!mSubscription.isUnsubscribed()){
                 mSubscription.unsubscribe();
             }
-            //Subject<Object, Object>
-//            mSubscription= RxBus.getInstance()
-//                    .toObservable()
-//                    .filter(o -> o instanceof DownloadProgressEvent)
-//                    .map(o -> (DownloadProgressEvent)o)//Object->DownloadProgressEvent
-//                    .filter(o -> (o.downloadId==repo.downloadId)&&repo.id.equals(o.repoId))
-//                    .observeOn(AndroidSchedulers.mainThread())//观察者
+            mSubscription = RxBus.getInstance()
+                    .toObservable()
+                    .filter(o -> o instanceof DownloadProgressEvent)
+                    .map(o -> (DownloadProgressEvent) o)
+                    .filter(o -> (o.downloadId == repo.downloadId) || repo.id.equals(o.repoId))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnNext(o -> {
+                        if (repo.downloadId == 0) repo.downloadId = o.downloadId;
+                    })
+                    .doOnNext(o -> mProgressRelativeLayout.setProgressCurrent(o.factor))
+                    .filter(o -> o.factor == 1f)
+                    .doOnNext(o -> repo.isUnzip = o.isUnzip)
+                    .doOnNext(o -> mProgressRelativeLayout.setUnzip(o.isUnzip))
+                    .filter(o -> o.isUnzip == false)
+                    .doOnNext(o -> repo.downloadId = 0)
+                    .subscribe();
 //                    .
         }
     }

@@ -1,5 +1,7 @@
 package com.mmazzarolo.dev.topgithub.model;
 
+import android.text.TextUtils;
+
 import com.loopeer.directorychooser.FileNod;
 
 /**
@@ -61,4 +63,13 @@ public class Repo extends BaseModel{
     public boolean isDownloading() {
         return downloadId > 0;
     }
+
+    public boolean isNetRepo() {
+        return !TextUtils.isEmpty(netDownloadUrl);
+    }
+
+    public boolean isLocalRepo() {
+        return !TextUtils.isEmpty(absolutePath);
+    }
+  
 }
