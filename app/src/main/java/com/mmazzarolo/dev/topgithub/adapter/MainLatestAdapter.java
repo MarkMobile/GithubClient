@@ -66,12 +66,6 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
             if (subscription!=null){
                 mAllSubscription.add(subscription);
             }
-//            viewHolder.mProgressRelativeLayout.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    
-//                }
-//            });
             viewHolder.mProgressRelativeLayout.setOnClickListener(v -> {
                 if (!var1.isDownloading() && !var1.isUnzip){
                     Navigator.startCodeReadActivity(getContext(), var1);
@@ -217,7 +211,13 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
         }
         
     }
-    
+
+    public void deleteRepo(Repo repo) {
+        int index = mData.indexOf(repo);
+        if (index == -1) return;
+        deleteItem(index);
+    }
+
     
     public void clearSubscription() {
         mAllSubscription.clear();

@@ -9,22 +9,27 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ViewAnimator;
 
+import com.loopeer.itemtouchhelperextension.ItemTouchHelperExtension;
 import com.mmazzarolo.dev.topgithub.R;
 import com.mmazzarolo.dev.topgithub.activity.base.BaseViewActivity;
+import com.mmazzarolo.dev.topgithub.adapter.MainLatestAdapter;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
+import com.mmazzarolo.dev.topgithub.event.rx.DownloadFailDeleteEvent;
 import com.mmazzarolo.dev.topgithub.model.Repo;
 import com.mmazzarolo.dev.topgithub.utils.LogUtil;
+import com.mmazzarolo.dev.topgithub.utils.RxBus;
 import com.mmazzarolo.dev.topgithub.widget.loader.ILoadHelper;
 
 import java.util.List;
 
 import butterknife.BindView;
+import rx.android.schedulers.AndroidSchedulers;
 
 /**
-  * @desc:离线下载界面
+  * @desc:RepoCache界面
   * @author：Arison on 2016/12/30
   */
-public class ProjectCacheActivity extends BaseViewActivity {
+public class RepoCacheActivity extends BaseViewActivity {
     
     public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1000;
     @BindView(R.id.view_recycler)
@@ -35,6 +40,10 @@ public class ProjectCacheActivity extends BaseViewActivity {
     FloatingActionButton mFabMain;
 
     private ILoadHelper mRecyclerLoader;
+    private MainLatestAdapter mMainLatestAdapter;
+
+    public ItemTouchHelperExtension mItemTouchHelper;
+    public ItemTouchHelperExtension.Callback mCallback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,17 +73,27 @@ public class ProjectCacheActivity extends BaseViewActivity {
         
         initView();
         
-//        registerSubscription(RxBus.getInstance().toObservable()
-//                .filter(o -> o instanceof DownloadFailDeleteEvent)
-//                .map(o -> ((DownloadFailDeleteEvent)o).deleteRepo)
-//                .observeOn(AndroidSchedulers.mainThread())
-//                .doOnNext()
-//                .subscribe()
-//        );
+        registerSubscription(RxBus.getInstance().toObservable()
+                .filter(o -> o instanceof DownloadFailDeleteEvent)
+                .map(o -> ((DownloadFailDeleteEvent) o).deleteRepo)
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(mMainLatestAdapter::deleteRepo)
+                .subscribe()
+        );
     }
 
     private void initView() {
-        
+//        mRecyclerLoader = new RecyclerLoader(mAnimatorRecyclerContent);
+//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        mMainLatestAdapter = new MainLatestAdapter(this);
+//        mRecyclerView.setAdapter(mMainLatestAdapter);
+//        mRecyclerView.addItemDecoration(new DividerItemDecorationMainList(this,
+//                DividerItemDecoration.VERTICAL_LIST
+//                , getResources().getDimensionPixelSize(R.dimen.repo_list_divider_start)
+//                , -1
+//                , -1));
+//        mItemTouchHelper = createItemTouchHelper();
+//        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
     }
 
     private void initCheckSelfPermission() {
