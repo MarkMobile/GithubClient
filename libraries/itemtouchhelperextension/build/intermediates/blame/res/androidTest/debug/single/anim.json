@@ -1,42 +1,42 @@
 [
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_grow_fade_in_from_bottom.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_top.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_slide_out_top.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_slide_out_top.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_out.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_fade_out.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_fade_out.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_top.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_slide_in_top.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_slide_in_top.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_out_bottom.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_slide_out_bottom.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_slide_in_bottom.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_slide_in_bottom.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_enter.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_popup_enter.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_popup_enter.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_fade_in.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_fade_in.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_fade_in.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\anim\\abc_popup_exit.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\anim\\abc_popup_exit.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\anim\\abc_popup_exit.xml"
     }
 ]

@@ -1,18 +1,18 @@
 [
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\abc_btn_colored_material.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\abc_btn_colored_material.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\drawable-v21\\abc_btn_colored_material.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\abc_action_bar_item_background_material.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\drawable-v21\\abc_action_bar_item_background_material.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\notification_action_background.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\notification_action_background.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\drawable-v21\\notification_action_background.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable-v21\\abc_edit_text_material.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\drawable-v21\\abc_edit_text_material.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\drawable-v21\\abc_edit_text_material.xml"
     }
 ]

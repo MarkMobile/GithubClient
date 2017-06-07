@@ -1,18 +1,18 @@
 [
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_action.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\layout-v21\\notification_action.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_icon_group.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_template_icon_group.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\layout-v21\\notification_template_icon_group.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_action_tombstone.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_action_tombstone.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
         "merged": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\res\\merged\\release\\layout-v21\\notification_template_custom_big.xml",
-        "source": "C:\\Project\\android_libary\\top-github\\libraries\\itemtouchhelperextension\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\25.0.1\\res\\layout-v21\\notification_template_custom_big.xml"
+        "source": "C:\\Users\\Arison\\.android\\build-cache\\7df711281875e8bf6b893e6178332b405e6fbc22\\output\\res\\layout-v21\\notification_template_custom_big.xml"
     }
 ]
