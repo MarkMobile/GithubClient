@@ -104,6 +104,21 @@ public class MainActivity extends BaseViewActivity {
         }
     }
 
+    @Override
+    protected void initView() {
+        
+    }
+
+    @Override
+    protected void initEvent() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
     private void setToolbarTitle() {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle(mSelectedLanguage);

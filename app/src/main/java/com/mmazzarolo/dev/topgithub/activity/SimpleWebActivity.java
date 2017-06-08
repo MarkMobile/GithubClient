@@ -117,6 +117,21 @@ public class SimpleWebActivity extends BaseRxActivity implements SearchView.OnQu
         parseIntent();
     }
 
+    @Override
+    protected void initView() {
+        
+    }
+
+    @Override
+    protected void initEvent() {
+
+    }
+
+    @Override
+    protected void initData() {
+
+    }
+
     private void parseIntent() {
         Intent intent = getIntent();
         mUrl = intent.getStringExtra(Navigator.EXTRA_WEB_URL);

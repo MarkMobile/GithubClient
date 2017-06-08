@@ -32,6 +32,8 @@ dependencies {
     compile deps.appcompatV7
     compile deps.design
     compile deps.cardviewV7
+
+    compile deps.logger
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'de.greenrobot:eventbus:2.4.0'
     compile 'com.jakewharton:butterknife:8.2.1'
@@ -51,6 +53,7 @@ dependencies {
     provided 'com.google.auto.value:auto-value:' + auto_value
     compile 'com.alibaba:fastjson:1.2.21'
     //recycleView分页
+    
     compile 'com.github.cundong:HeaderAndFooterRecyclerView:1e616c9552'
     //文件选择类库
     compile project(':libraries:directoryandfilechooser')

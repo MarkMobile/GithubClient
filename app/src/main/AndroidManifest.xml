@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.mmazzarolo.dev.topgithub" >
-
     <!-- 权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -27,12 +26,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- 离线下载界面 -->
+        <!--SD卡目录选择-->
+        <activity
+            android:name="com.loopeer.directorychooser.DirectoryFileChooserActivity" />
+        
+        <!-- 离线下载 -->
         <activity
             android:name=".activity.RepoCacheActivity"
             android:label="@string/title_activity_project_download" >
         </activity>
-        <!-- simple web -->
+        <!-- 网页组件-->
         <activity
             android:name=".activity.SimpleWebActivity"
             android:label="@string/title_activity_simple_web" >

@@ -133,7 +133,7 @@ public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
 
         @Override
         public float getActionWidth() {
-            return 0;
+            return mActionContainer.getWidth();
         }
       
         //rxjava 绑定

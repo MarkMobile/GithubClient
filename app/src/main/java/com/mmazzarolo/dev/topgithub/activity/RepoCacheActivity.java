@@ -1,36 +1,41 @@
 package com.mmazzarolo.dev.topgithub.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ViewAnimator;
 
+import com.loopeer.directorychooser.FileNod;
+import com.loopeer.directorychooser.NavigatorChooser;
 import com.loopeer.itemtouchhelperextension.ItemTouchHelperExtension;
 import com.mmazzarolo.dev.topgithub.R;
-import com.mmazzarolo.dev.topgithub.activity.base.BaseViewActivity;
+import com.mmazzarolo.dev.topgithub.activity.base.BaseActivity;
+import com.mmazzarolo.dev.topgithub.adapter.ItemTouchHelperCallback;
 import com.mmazzarolo.dev.topgithub.adapter.MainLatestAdapter;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
-import com.mmazzarolo.dev.topgithub.event.rx.DownloadFailDeleteEvent;
 import com.mmazzarolo.dev.topgithub.model.Repo;
-import com.mmazzarolo.dev.topgithub.utils.LogUtil;
-import com.mmazzarolo.dev.topgithub.utils.RxBus;
 import com.mmazzarolo.dev.topgithub.widget.loader.ILoadHelper;
+import com.mmazzarolo.dev.topgithub.widget.loader.RecyclerLoader;
+import com.mmazzarolo.dev.topgithub.widget.recycleview.decoration.DividerItemDecoration;
+import com.mmazzarolo.dev.topgithub.widget.recycleview.decoration.DividerItemDecorationMainList;
 
 import java.util.List;
 
 import butterknife.BindView;
-import rx.android.schedulers.AndroidSchedulers;
+import butterknife.OnClick;
 
 /**
-  * @desc:RepoCache界面
-  * @author：Arison on 2016/12/30
-  */
-public class RepoCacheActivity extends BaseViewActivity {
-    
+ * @desc:离线界面
+ * @author：Arison on 2016/12/30
+ */
+public class RepoCacheActivity extends BaseActivity {
+
     public static final int MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE = 1000;
     @BindView(R.id.view_recycler)
     RecyclerView mRecyclerView;
@@ -45,57 +50,91 @@ public class RepoCacheActivity extends BaseViewActivity {
     public ItemTouchHelperExtension mItemTouchHelper;
     public ItemTouchHelperExtension.Callback mCallback;
 
+     @OnClick(R.id.fab_main)
+     public void doSelectFile(){
+         NavigatorChooser.startDirectoryFileChooserActivity(this);
+     }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        LogUtil.d("onCreate()");
-        initCheckSelfPermission();//检查权限
-        
-        RepoDao repoDao=new RepoDao();//创建数据操作DAO
-        List<Repo> repos=repoDao.readRepos();
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+            case NavigatorChooser.DIRECTORY_FILE_SELECT_CODE:
+                if (resultCode == RESULT_OK) {
+                    FileNod node = (FileNod) data.getSerializableExtra(NavigatorChooser.EXTRA_FILE_NODE);
+                    Repo repo = Repo.parse(node);
+                    repo.id = String.valueOf(new RepoDao().insertRepo(repo));
+//                    Navigator.startCodeReadActivity(MainActivity.this, repo);
+                }
+                break;
+        }
     }
+
+    protected void initView() {
+        initCheckSelfPermission();//检查权限
+        mRecyclerLoader = new RecyclerLoader(mAnimatorRecyclerContent);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mMainLatestAdapter = new MainLatestAdapter(this);
+        mRecyclerView.setAdapter(mMainLatestAdapter);
+        mRecyclerView.addItemDecoration(new DividerItemDecorationMainList(this,
+                  DividerItemDecoration.VERTICAL_LIST
+                , getResources().getDimensionPixelSize(R.dimen.repo_list_divider_start)
+                , -1
+                , -1));
+        mItemTouchHelper = createItemTouchHelper();
+        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+    }
+
 
     @Override
     protected void onResume() {
         super.onResume();
+        loadLocalData();
+    }
+
+    private void loadLocalData() {
+        RepoDao repoDao = new RepoDao();
+        List<Repo> repos = repoDao.readRepos();
+        setUpContent(repos);
+    }
+
+    private void setUpContent(List<Repo> repos) {
+        mRecyclerLoader.showContent();
+        mMainLatestAdapter.updateData(repos);
+    }
+    
+    @Override
+    protected void initEvent() {
+
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-    }
+    protected void initData() {
 
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        LogUtil.d("onPostCreate()");
-        
-        initView();
-        
-        registerSubscription(RxBus.getInstance().toObservable()
-                .filter(o -> o instanceof DownloadFailDeleteEvent)
-                .map(o -> ((DownloadFailDeleteEvent) o).deleteRepo)
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnNext(mMainLatestAdapter::deleteRepo)
-                .subscribe()
-        );
+//        initView();
+//        registerSubscription(RxBus.getInstance().toObservable()
+//                .filter(o -> o instanceof DownloadFailDeleteEvent)
+//                .map(o -> ((DownloadFailDeleteEvent) o).deleteRepo)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .doOnNext(mMainLatestAdapter::deleteRepo)
+//                .subscribe()
+//        );
     }
 
-    private void initView() {
-//        mRecyclerLoader = new RecyclerLoader(mAnimatorRecyclerContent);
-//        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        mMainLatestAdapter = new MainLatestAdapter(this);
-//        mRecyclerView.setAdapter(mMainLatestAdapter);
-//        mRecyclerView.addItemDecoration(new DividerItemDecorationMainList(this,
-//                DividerItemDecoration.VERTICAL_LIST
-//                , getResources().getDimensionPixelSize(R.dimen.repo_list_divider_start)
-//                , -1
-//                , -1));
-//        mItemTouchHelper = createItemTouchHelper();
-//        mItemTouchHelper.attachToRecyclerView(mRecyclerView);
+    public ItemTouchHelperExtension createItemTouchHelper() {
+        mCallback = createCallback();
+        return new ItemTouchHelperExtension(mCallback);
     }
 
+    public ItemTouchHelperExtension.Callback createCallback() {
+        return new ItemTouchHelperCallback();
+    }
+    
     private void initCheckSelfPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
@@ -115,9 +154,5 @@ public class RepoCacheActivity extends BaseViewActivity {
         return R.layout.activity_project_download;
     }
 
-    @Override
-    protected void onTryAgainClick() {
-
-    }
 
 }

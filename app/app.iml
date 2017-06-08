@@ -143,6 +143,7 @@
     <orderEntry type="library" exported="" scope="TEST" name="junit-4.12" level="project" />
     <orderEntry type="library" exported="" name="butterknife-annotations-8.2.1" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-25.1.1" level="project" />
+    <orderEntry type="library" exported="" name="logger-1.15" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-25.1.1" level="project" />
     <orderEntry type="library" exported="" name="auto-value-1.2" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-25.1.1" level="project" />

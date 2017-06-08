@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.mmazzarolo.dev.topgithub.utils.LogUtil;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by Arison on 2017/2/20.
  * 基类 -最顶层的继承父类，尽量无侵入式设计
@@ -17,9 +19,28 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayoutResourceId());
+        ButterKnife.bind(this);
         LogUtil.d(TAG,"onCreate()");
+        initView();
+        initEvent();
+        initData();
     }
+    
+    /**
+     * 初始化View
+     */
+    protected abstract void initView();
 
+    /**
+     * add Listener
+     */
+    protected abstract void initEvent();
+
+    /**
+     * 初始化数据
+     */
+    protected abstract void initData();
+    
     @Override
     protected void onStart() {
         super.onStart();

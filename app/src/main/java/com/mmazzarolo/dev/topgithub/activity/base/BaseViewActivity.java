@@ -20,7 +20,7 @@ import butterknife.ButterKnife;
  * 默认activity的布局样式-基类 
  * This Activity handles the content/loading/empty/error/no_connection views.
  */
-public abstract class BaseViewActivity extends BaseRxActivity{
+public abstract class BaseViewActivity extends BaseActivity{
 
     @BindView(R.id.recyclerview) RecyclerView mViewContent;
 
