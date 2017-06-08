@@ -24,6 +24,7 @@ import com.mmazzarolo.dev.topgithub.widget.loader.ILoadHelper;
 import com.mmazzarolo.dev.topgithub.widget.loader.RecyclerLoader;
 import com.mmazzarolo.dev.topgithub.widget.recycleview.decoration.DividerItemDecoration;
 import com.mmazzarolo.dev.topgithub.widget.recycleview.decoration.DividerItemDecorationMainList;
+import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -58,6 +59,7 @@ public class RepoCacheActivity extends BaseActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        Logger.d("onActivityResult()");
         switch (requestCode) {
             case NavigatorChooser.DIRECTORY_FILE_SELECT_CODE:
                 if (resultCode == RESULT_OK) {
@@ -89,6 +91,7 @@ public class RepoCacheActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        Logger.d("onResume()");
         loadLocalData();
     }
 
