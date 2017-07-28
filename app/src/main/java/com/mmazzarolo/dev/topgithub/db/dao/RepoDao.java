@@ -16,8 +16,21 @@ import java.util.List;
  * 这个类有没有必要写成单例，还有待考证
  */
 public class RepoDao {
+
+    private SQLiteDatabase db;
     
-    SQLiteDatabase db;
+     private static RepoDao instance;
+         
+      public static  RepoDao getInstance(){
+            if (instance==null){
+                synchronized (RepoDao.class){
+                    if (instance==null){
+                        instance=new RepoDao();
+                    }
+                }
+            }  
+            return instance;
+      }
     
     public RepoDao(){
         db=  DatabaseManager.getInstance().openDatabase();
@@ -81,6 +94,10 @@ public class RepoDao {
     public void updateRepoUnzipProgress(long downloadId, float factor, boolean isUnzip) {
         db.execSQL(DbRepoModel.UPDATE_UNZIP_PROGRESS
                 , new String[]{String.valueOf(factor),  String.valueOf(isUnzip ? 1 : 0), String.valueOf(downloadId)});
+    }
+
+    public void updateRepoLastModify(long primaryKey, long lastModify) {
+        db.execSQL(DbRepoModel.UPDATE_LAST_MODIFY, new String[]{String.valueOf(lastModify), String.valueOf(primaryKey)});
     }
 
     public void resetRepoDownloadId(long downloadId) {

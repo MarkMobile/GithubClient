@@ -5,8 +5,11 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 
 import com.mmazzarolo.dev.topgithub.MainApplication;
+import com.mmazzarolo.dev.topgithub.model.DirectoryNode;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by Arison on 2017/2/9.
@@ -82,5 +85,25 @@ public class FileCache {
                 }
             }
         }
+    }
+
+    public static DirectoryNode getFileDirectory(File file) {
+        if (file == null) return null;
+        DirectoryNode directoryNode = new DirectoryNode();
+        directoryNode.name = file.getName();
+        directoryNode.absolutePath = file.getAbsolutePath();
+        if (file.isDirectory()) {
+            directoryNode.isDirectory = true;
+            directoryNode.pathNodes = new ArrayList<>();
+            for (File childFile : file.listFiles()) {
+                if (childFile.getName().startsWith(".") || childFile.getName().startsWith("_")) continue;
+                DirectoryNode childNode = getFileDirectory(childFile);
+                directoryNode.pathNodes.add(childNode);
+            }
+            if (!directoryNode.pathNodes.isEmpty()) {
+                Collections.sort(directoryNode.pathNodes);
+            }
+        }
+        return directoryNode;
     }
 }

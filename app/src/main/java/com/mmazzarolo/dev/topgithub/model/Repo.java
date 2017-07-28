@@ -4,10 +4,11 @@ import android.text.TextUtils;
 
 import com.loopeer.directorychooser.FileNod;
 
-/**
- * Created by Arison on 2017/1/9.
- * 离线下载repo
- */
+
+ /**
+   * @desc:实体类-项目地址
+   * @author:Arison 2017/7/26
+   */
 public class Repo extends BaseModel{
     
     public String name;//项目名
@@ -43,6 +44,14 @@ public class Repo extends BaseModel{
         result.absolutePath = node.absolutePath;
         result.isFolder = node.isFolder;
         return result;
+    }
+
+    public DirectoryNode toDirectoryNode() {
+        DirectoryNode node = new DirectoryNode();
+        node.name = name;
+        node.absolutePath = absolutePath;
+        node.isDirectory = isFolder;
+        return node;
     }
 
     @Override

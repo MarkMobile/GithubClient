@@ -31,7 +31,7 @@ import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by Arison on 2017/2/23.
- * 离线项目列表适配器
+ * 源码项目列表适配器
  */                                      
 public class MainLatestAdapter extends RecyclerViewAdapter<Repo> {
 

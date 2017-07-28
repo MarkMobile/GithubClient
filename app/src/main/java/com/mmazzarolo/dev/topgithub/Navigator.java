@@ -4,6 +4,7 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 
+import com.mmazzarolo.dev.topgithub.activity.CodeReadActivity;
 import com.mmazzarolo.dev.topgithub.activity.MainActivity;
 import com.mmazzarolo.dev.topgithub.activity.SimpleWebActivity;
 import com.mmazzarolo.dev.topgithub.db.dao.RepoDao;
@@ -62,9 +63,9 @@ public class Navigator {
       * @author：Arison on 2017/3/1
       */
     public static void startCodeReadActivity(Context context, Repo repo) {
-//        Intent intent = new Intent(context, CodeReadActivity.class);
-//        intent.putExtra(EXTRA_REPO, repo);
-//        context.startActivity(intent);
+        Intent intent = new Intent(context, CodeReadActivity.class);
+        intent.putExtra(EXTRA_REPO, repo);
+        context.startActivity(intent);
     }
     
     /**

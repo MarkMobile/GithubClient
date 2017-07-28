@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mmazzarolo.dev.topgithub" >
+    package="com.mmazzarolo.dev.topgithub">
     <!-- 权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -14,12 +14,12 @@
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
 
         <!-- 主程序界面 -->
         <activity
             android:name=".activity.MainActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,33 +27,31 @@
             </intent-filter>
         </activity>
         <!--SD卡目录选择-->
-        <activity
-            android:name="com.loopeer.directorychooser.DirectoryFileChooserActivity" />
-        
+        <activity android:name="com.loopeer.directorychooser.DirectoryFileChooserActivity" />
+
         <!-- 离线下载 -->
         <activity
             android:name=".activity.RepoCacheActivity"
-            android:label="@string/title_activity_project_download" >
-        </activity>
+            android:label="@string/title_activity_project_download"></activity>
         <!-- 网页组件-->
         <activity
             android:name=".activity.SimpleWebActivity"
-            android:label="@string/title_activity_simple_web" >
-        </activity>
+            android:label="@string/title_activity_simple_web"></activity>
+        <!--源码阅读-->
+        <activity android:name=".activity.CodeReadActivity"></activity>
         <!--下载服务-->
         <service
             android:name=".service.DownloadRepoService"
             android:enabled="true"
-            android:exported="true" >
-        </service>
-         <!--广播-->
+            android:exported="true"></service>
+        <!--广播-->
         <receiver android:name=".broadcast.DownloadReceiver">
             <intent-filter>
-                <action android:name="android.intent.action.DOWNLOAD_COMPLETE"/>
-                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+                <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED" />
             </intent-filter>
         </receiver>
-        
+
     </application>
 
 </manifest>

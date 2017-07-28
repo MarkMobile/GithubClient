@@ -24,7 +24,6 @@ import com.mmazzarolo.dev.topgithub.widget.loader.ILoadHelper;
 import com.mmazzarolo.dev.topgithub.widget.loader.RecyclerLoader;
 import com.mmazzarolo.dev.topgithub.widget.recycleview.decoration.DividerItemDecoration;
 import com.mmazzarolo.dev.topgithub.widget.recycleview.decoration.DividerItemDecorationMainList;
-import com.orhanobut.logger.Logger;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * @desc:离线界面
+ * @desc:源码界面
  * @author：Arison on 2016/12/30
  */
 public class RepoCacheActivity extends BaseActivity {
@@ -51,15 +50,14 @@ public class RepoCacheActivity extends BaseActivity {
     public ItemTouchHelperExtension mItemTouchHelper;
     public ItemTouchHelperExtension.Callback mCallback;
 
-     @OnClick(R.id.fab_main)
-     public void doSelectFile(){
-         NavigatorChooser.startDirectoryFileChooserActivity(this);
-     }
+    @OnClick(R.id.fab_main)
+    public void doSelectFile() {
+        NavigatorChooser.startDirectoryFileChooserActivity(this);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Logger.d("onActivityResult()");
         switch (requestCode) {
             case NavigatorChooser.DIRECTORY_FILE_SELECT_CODE:
                 if (resultCode == RESULT_OK) {
@@ -79,7 +77,7 @@ public class RepoCacheActivity extends BaseActivity {
         mMainLatestAdapter = new MainLatestAdapter(this);
         mRecyclerView.setAdapter(mMainLatestAdapter);
         mRecyclerView.addItemDecoration(new DividerItemDecorationMainList(this,
-                  DividerItemDecoration.VERTICAL_LIST
+                DividerItemDecoration.VERTICAL_LIST
                 , getResources().getDimensionPixelSize(R.dimen.repo_list_divider_start)
                 , -1
                 , -1));
@@ -91,7 +89,6 @@ public class RepoCacheActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Logger.d("onResume()");
         loadLocalData();
     }
 
@@ -105,7 +102,7 @@ public class RepoCacheActivity extends BaseActivity {
         mRecyclerLoader.showContent();
         mMainLatestAdapter.updateData(repos);
     }
-    
+
     @Override
     protected void initEvent() {
 
@@ -137,7 +134,7 @@ public class RepoCacheActivity extends BaseActivity {
     public ItemTouchHelperExtension.Callback createCallback() {
         return new ItemTouchHelperCallback();
     }
-    
+
     private void initCheckSelfPermission() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE)
